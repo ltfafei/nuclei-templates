@@ -3,7 +3,7 @@ id: host-header-injection
 info:
   name: Host Header Injection
   author: princechaddha
-  severity: info
+  severity: low
   description: HTTP header injection is a general class of web application security vulnerability which occurs when Hypertext Transfer Protocol headers are dynamically generated based on user input.
   reference:
     - https://portswigger.net/web-security/host-header
