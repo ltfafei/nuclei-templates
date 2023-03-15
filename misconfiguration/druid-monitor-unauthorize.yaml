@@ -1,0 +1,57 @@
+id: druid-monitor-unauthorize
+
+info:
+  name: Druid Monitor Unauthorized Access
+  author: ohlinge（write by afei00123）
+  severity: high
+  tags: druid,unauth
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/druid/index.html"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - 'Druid Stat Index</title>'
+
+      - type: status
+        status:
+          - 200
+
+  - method: GET
+    path:
+      - "{{BaseURL}}/druid/datasource.html"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - 'DataSourceStat'
+          - 'JSON API'
+        condition: and
+
+      - type: status
+        status:
+          - 200
+
+  - method: GET
+    path:
+      - "{{BaseURL}}/druid/websession.html"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - 'Web Session'
+          - 'JSON API'
+        condition: and
+
+      - type: status
+        status:
+          - 200
